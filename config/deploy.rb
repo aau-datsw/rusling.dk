@@ -2,8 +2,7 @@
 lock '~> 3.11.0'
 
 set :application, 'ruslingdk'
-set :repo_url, 'git@github.com:Minibrams/Rusperiode.git'
-set :repo_tree, 'ruslingdk'
+set :repo_url, 'git@github.com:aau-datsw/rusling.dk.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
