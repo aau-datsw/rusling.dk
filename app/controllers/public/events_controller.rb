@@ -10,7 +10,7 @@ class Public::EventsController < PublicApplicationController
 
     respond_to do |format|
       format.html
-      format.ics do
+      format.any(:ics, :vcs) do
         cal = Icalendar::Calendar.new
 
         tzid = "Europe/Copenhagen"

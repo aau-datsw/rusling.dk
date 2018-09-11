@@ -4,3 +4,4 @@
 # Mime::Type.register "text/richtext", :rtf
 
 Mime::Type.register "text/calendar", :ics
+Mime::Type.register "text/calendar", :vcs
