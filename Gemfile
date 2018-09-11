@@ -33,6 +33,7 @@ gem 'omniauth-github'
 
 gem 'non-stupid-digest-assets'
 
+gem 'icalendar'
 gem 'RedCloth'
 gem 'redcarpet'
 

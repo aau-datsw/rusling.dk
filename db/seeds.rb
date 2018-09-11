@@ -246,14 +246,16 @@ def create_datsw(domain)
   studiestartsdag.lat = 57.0502987
   studiestartsdag.lng = 9.9229435
   studiestartsdag.begin_at = "2018-09-03 08:30:00"
+  studiestartsdag.end_at = "2018-09-03 14:00:00"
   studiestartsdag.save
 
   pubcrawl = Event.find_or_initialize_by(title: "Pubcrawl", educational_domain: datswdomain)
   pubcrawl.description = ""
-  pubcrawl.location = "Honnørkajen"
+  pubcrawl.location = "Gammeltorv"
   pubcrawl.lat = 57.0502987
   pubcrawl.lng = 9.9229435
   pubcrawl.begin_at = "2018-09-12 17:30:00"
+  pubcrawl.end_at = "2018-09-12 22:00:00"
   pubcrawl.save
 
   boardgame = Event.find_or_initialize_by(title: "Brætspilsaften", educational_domain: datswdomain)
@@ -262,6 +264,7 @@ def create_datsw(domain)
   boardgame.lat = 57.0465307
   boardgame.lng = 9.9165076
   boardgame.begin_at = "2018-09-17 16:30:00"
+  boardgame.end_at = "2018-09-17 21:00:00"
   boardgame.save
 
   knoldbold = Event.find_or_initialize_by(title: "Knoldbold", educational_domain: datswdomain)
@@ -270,6 +273,7 @@ def create_datsw(domain)
   knoldbold.lat = 57.055934
   knoldbold.lng = 9.906076
   knoldbold.begin_at = "2018-09-20 14:30:00"
+  knoldbold.end_at = "2018-09-20 18:30:00"
   knoldbold.save
 
   ruskursus = Event.find_or_initialize_by(title: "Ruskursus", educational_domain: datswdomain)
@@ -278,6 +282,7 @@ def create_datsw(domain)
   ruskursus.lat = 57.054528
   ruskursus.lng = 9.906408
   ruskursus.begin_at = "2018-10-03 08:30:00"
+  ruskursus.end_at = "2018-10-05 15:00:00"
   ruskursus.save
 
   latex = Event.find_or_initialize_by(title: "LaTeX kursus", educational_domain: datswdomain)
@@ -286,6 +291,7 @@ def create_datsw(domain)
   latex.lat = 57.053007
   latex.lng = 9.912546
   latex.begin_at = "2018-10-11 16:30:00"
+  latex.end_at = "2018-10-11 19:00:00"
   latex.save
 
   ruslan = Event.find_or_initialize_by(title: "Ruslan", educational_domain: datswdomain)
@@ -294,6 +300,7 @@ def create_datsw(domain)
   ruslan.lat = 57.0123062
   ruslan.lng = 9.9889782
   ruslan.begin_at = "2018-10-19 17:30:00"
+  ruslan.end_at = "2018-10-21 13:00:00"
   ruslan.save
 
   datswdomain.update(primary_menu: datswmenu, default_page: pa)
@@ -308,7 +315,12 @@ def create_frontpage(domain)
   dom.locale = 'da'
   dom.save!
 
-  fppage = Page.create!(educational_domain: dom, title: 'rusling.dk', content_header: 'Velkommen til rusling.dk', content: 'Find din uddannelse i oversigten nedenunder!', view_file: "frontpage")
+  fppage = Page.find_or_create_by(educational_domain: dom, slug: "")
+  fppage.title = 'rusling.dk'
+  fppage.content_header = 'Velkommen til rusling.dk'
+  fppage.content = 'Find din uddannelse i oversigten nedenunder!'
+  fppage.view_file = "frontpage"
+
   dom.update!(default_page: fppage)
 end
 

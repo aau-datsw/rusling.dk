@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # Events
   get '/events/', to: 'public/events#index'
-  get '/events/:id', to: 'public/events#show'
+  get '/events/:id', to: 'public/events#show', as: :event
 
   # Dynamic page-matching
   match '/:slug', to: 'public/pages#show',
