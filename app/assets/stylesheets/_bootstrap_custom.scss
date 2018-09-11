@@ -1,0 +1,237 @@
+/*!
+ * Bootstrap v4.0.0-beta (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/print";
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+// @import "bootstrap/code";
+@import "bootstrap/grid";
+// @import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+@import "bootstrap/transitions";
+@import "bootstrap/dropdown";
+// @import "bootstrap/button-group";
+// @import "bootstrap/input-group";
+// @import "bootstrap/custom-forms";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+// @import "bootstrap/card";
+@import "bootstrap/breadcrumb";
+@import "bootstrap/pagination";
+@import "bootstrap/badge";
+@import "bootstrap/jumbotron";
+@import "bootstrap/alert";
+// @import "bootstrap/progress";
+// @import "bootstrap/media";
+// @import "bootstrap/list-group";
+// @import "bootstrap/close";
+// @import "bootstrap/modal";
+// @import "bootstrap/tooltip";
+// @import "bootstrap/popover";
+// @import "bootstrap/carousel";
+@import "bootstrap/utilities";
+
+/*
+ * Social Buttons for Bootstrap
+ *
+ * Copyright 2013-2016 Panayiotis Lipiridis
+ * Licensed under the MIT License
+ *
+ * https://github.com/lipis/bootstrap-social
+ */
+
+$bs-height-base: ($line-height-base + $input-btn-padding-y * 2) !default;
+$bs-height-lg:   (floor($font-size-lg * $line-height-base) + $input-btn-padding-y-lg * 2) !default;
+$bs-height-sm:   (floor($font-size-sm * 1.5) + $input-btn-padding-y-sm * 2) !default;
+$bs-height-xs:   (floor($font-size-sm * 1.2) + $input-btn-padding-y-sm + 1) !default;
+
+.btn-social {
+  position: relative;
+  padding-left: ($bs-height-base + $input-btn-padding-x);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  > :first-child {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: $bs-height-base;
+    line-height: ($bs-height-base + 0.15);
+    font-size: 1.6em;
+    text-align: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-social-icon {
+  @extend .btn-social;
+  height: ($bs-height-base + 2);
+  width: ($bs-height-base + 2);
+  padding: 0;
+  > :first-child {
+    border: none;
+    text-align: center;
+    width: 100%!important;
+  }
+}
+
+@mixin btn-social($color-bg) {
+  background-color: $color-bg;
+  color: #fff;
+  @include button-variant($color-bg, rgba(0,0,0,.2));
+}
+
+.btn-bitbucket     { @include btn-social(#205081); }
+.btn-facebook      { @include btn-social(#3b5998); }
+.btn-github        { @include btn-social(#444444); }
+.btn-google        { @include btn-social(#dd4b39); }
+
+div.container {
+  &.solid {
+    background-color: theme-color("light");
+  }
+  z-index: 5;
+}
+
+div.solid {
+  background-color: theme-color("light");
+  border: 1px solid #101519;
+  border-top: 4px solid #101519;
+}
+
+.color-base {
+  box-shadow: rgba(0, 0, 0, 1) 0px 6px 40px -4px;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} .solid {
+    @include border-radius(10px);
+  }
+}
+
+.underlined {
+  border-bottom: 1px solid $gray-400;
+  margin-bottom: 20px;
+}
+
+header {
+  min-height: 150px;
+  &.center {
+    text-align: center;
+  }
+  &:not(.solid){
+    color: theme-color('light');
+  }
+  h1 {
+    font-family: $font-family-sans-serif;
+    font-weight: 700;
+    font-size: 3.6rem;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+}
+
+body {
+  margin-bottom: 219px;
+  background-color: #101519; // Ensures "overscrolling" looks like footer
+}
+
+footer {
+  text-align: center;
+  padding: 30px 100px 0;
+  border-bottom: 8px solid #101519;
+  background-color: #252C30;
+  z-index: -5;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  will-change: transform;
+}
+
+blockquote {
+  margin: 1rem;
+  padding: 1.5rem;
+  background-color: $gray-400;
+  border: 1px solid darken($gray-400, 10%);
+  quotes: "" "";
+  &:before {
+    float: left;
+    margin-right: 10px;
+    font-family: FontAwesome;
+    font-size: 30px;
+    line-height: 1;
+    content: '\f10d';
+  }
+  p, h2 {
+    margin: 0 0 0 40px;
+  }
+}
+nav {
+  a {
+    color: $white;
+    font-weight: 100;
+    &.nav-link {
+      font-size: 2vw;
+      font-family: 'Bree Serif', serif;
+      color: white;
+      align-items: center;
+      text-align: center;
+      &:hover {
+
+      }
+    }
+    &.dropdown-item {
+      line-height: 2;
+      padding: 0;
+      text-align: center;
+      font-family: 'Source San Pro', sans-serif;
+      color: white;
+      height: inherit;
+    }
+    &.dropdown-item:nth-child(even){
+      background: #808080;
+    }
+    &.dropdown-item:nth-child(odd){
+      background: #585857;
+    }
+  }
+  .dropdown-header {
+    font-weight: 600;
+  }
+}
+
+.dropdown-menu.show{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  align-items: center;
+}
+
+.nav-item.dropdown{
+  font-size: 2vw;
+  background: #3E3E3D;
+  font-family: 'Bree Serif', serif;
+  color: white;
+  font-weight: 150;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin: 0;
+  height: auto;
+}
+

@@ -1,0 +1,45 @@
+<% raise "Wrong condition given" unless condition.in?([:today, :upcoming, :previous])%>
+<h5 style="text-align: center">
+  <%= t("events.#{condition}") %>
+</h5>
+
+<div id="<%= accordionID %>">
+  <% @domain.events.order(:begin_at).send(condition).each do |event| %>
+    <div class="card event_card event_<%= event.id %>">
+      <div class="card-header" id="heading<%= event["id"] %>">
+        <div class="accordion-toggle" data-toggle="collapse" data-target="#collapse<%= event.id %>" aria-expanded="true" aria-controls="collapse<%= event.id %>">
+          <div class="accordion-header event-title"><%= event.title %></div><div class="accordion-header event-date"><%= l(event.begin_at, format: :short) %></div>
+
+          <div style="clear: both;"></div>
+        </div>
+      </div>
+      <div id="collapse<%= event.id %>" class="collapse" aria-labelledby="heading<%= event.id %>" data-parent="#accordionParent">
+        <div class="card-body">
+          <div class="row">
+            <div class="col pb-2 pb-lg-0">
+
+              <%= raw(event.description) %>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div id="eventmap<%= event.id %>" style="height: 100%;min-height:150px"></div>
+              <p><%= event.location %></p>
+              <% content_for :init_maps do %>
+                var location = {lat: <%= event.lat %>, lng: <%= event.lng %>}
+                window.rus_maps[<%= event.id %>] = new google.maps.Map(document.getElementById('eventmap<%= event.id %>'), {
+                  center: location,
+                  disableZoom: true,
+                  zoom: 14
+                });
+
+                var marker = new google.maps.Marker({
+                  position: location,
+                  map: window.rus_maps[<%= event.id %>]
+                });
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
