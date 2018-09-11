@@ -17,23 +17,25 @@
         <div class="card-body">
           <div class="row">
             <div class="col pb-2 pb-lg-0">
+
               <%= raw(event.description) %>
             </div>
             <div class="col-12 col-lg-4">
               <div id="eventmap<%= event.id %>" style="height: 100%;min-height:150px"></div>
-                <% content_for :init_maps do %>
-                  var location = {lat: <%= event.lat %>, lng: <%= event.lng %>}
-                  window.rus_maps[<%= event.id %>] = new google.maps.Map(document.getElementById('eventmap<%= event.id %>'), {
-                    center: location,
-                    disableZoom: true,
-                    zoom: 11
-                  });
+              <p><%= event.location %></p>
+              <% content_for :init_maps do %>
+                var location = {lat: <%= event.lat %>, lng: <%= event.lng %>}
+                window.rus_maps[<%= event.id %>] = new google.maps.Map(document.getElementById('eventmap<%= event.id %>'), {
+                  center: location,
+                  disableZoom: true,
+                  zoom: 11
+                });
 
-                  var marker = new google.maps.Marker({
-                    position: location,
-                    map: window.rus_maps[<%= event.id %>]
-                  });
-                <% end %>
+                var marker = new google.maps.Marker({
+                  position: location,
+                  map: window.rus_maps[<%= event.id %>]
+                });
+              <% end %>
             </div>
           </div>
         </div>
