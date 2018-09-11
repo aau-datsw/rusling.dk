@@ -252,7 +252,7 @@ def create_datsw(domain)
   pubcrawl = Event.find_or_initialize_by(title: "Pubcrawl", educational_domain: datswdomain)
   pubcrawl.description = "Pubcrawl er en sjov og hyggelig aften, hvor I kommer rundt på de forskellige barer i Aalborg. I vil i starten af aftenen blive delt ind i hold, og dyste imod andre hold I møder. Dommerne på stedet vil tildele og fratage points fra de forskellige hold, og aftenens vinder vil modtage en velfortjent præmie, når I alle sammen samles til sidst i byen.
   Bemærk, at der ikke er nogen af legene, hvor der er nødvendigt at drikke for at deltage."
-  pubcrawl.location = "Honnørkajen"
+  pubcrawl.location = "Gammeltorv"
   pubcrawl.lat = 57.048134
   pubcrawl.lng = 9.919349
   pubcrawl.begin_at = "2018-09-12 18:00:00"
