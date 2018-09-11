@@ -35,7 +35,7 @@ class Public::EventsController < PublicApplicationController
             e.dtend       = Icalendar::Values::DateTime.new(event.end_at, tzid: tzid)
             e.summary     = event.description.truncate(50)
             e.description = event.description
-            e.url         = event_url(id: event)
+            e.url         = event_url(host: @domain.domain, id: event)
             e.location    = event.location
           end
         end
