@@ -30,7 +30,7 @@ class Public::EventsController < PublicApplicationController
           cal.event do |e|
             e.dtstart     = Icalendar::Values::DateTime.new(event.begin_at, tzid: tzid)
             e.dtend       = Icalendar::Values::DateTime.new(event.end_at, tzid: tzid)
-            e.summary     = event.description.truncate(50)
+            e.summary     = event.title
             e.description = event.description
             e.url         = event_url(host: @domain.domain, id: event)
             e.location    = event.location
