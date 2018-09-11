@@ -1,0 +1,41 @@
+<%= render partial: 'partials/event_header' %>
+
+<div class="padding">
+
+  <div id="calendar" class="mt-3"></div>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    filterSelect("alle");
+    $('#calendar').fullCalendar({
+      defaultView: 'month',
+      locale: 'da',
+      events: <%= raw(@events.map do |ev|
+        base = { title: ev.title, start: ev.begin_at, url: "/events/#{ev.id}"}
+        base.merge!(backgroundColor: @domain.colors["primary-color"]) #if ev.planner == 'ruskorps'
+        base
+      end.to_json) %>/*,
+      eventRender: function eventRender( event, element, view ) {
+        if ($('#planner-buttons .active').val() == "alle")
+          return true
+        else
+          return event.className == $('#planner-buttons .active').val()
+      }*/
+    });
+  })
+  </script>
+
+
+  <div id="accordionParent">
+    <% if @events.today.any? %>
+      <%= render partial: "/partials/event_accordion", locals: {accordionID: "accordionToday", condition: :today  } %>
+    <% end %>
+    <% if @events.upcoming.any? %>
+      <%= render partial: "/partials/event_accordion", locals: {accordionID: "accordionNext", condition: :upcoming  } %>
+    <% end %>
+    <% if @events.previous.any? %>
+      <%= render partial: "/partials/event_accordion", locals: {accordionID: "accordionPrevious", condition: :previous } %>
+    <% end %>
+  </div>
+
+</div>

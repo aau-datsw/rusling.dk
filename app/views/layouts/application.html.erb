@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @domain.name %> - Lidt nemmere studiestart</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Source+Sans+Pro" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet">
+    <%# <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css" rel="stylesheet">%>
+
+    <%= render partial: 'layouts/custom_colors', locals:{colors: @domain.colors}%>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/locale/da.js"></script>
+    <script>
+
+      window.rus_maps = [];
+      function initGoogleMap(){
+        <%= content_for :init_maps %>
+      }
+    </script>
+
+    <%= yield :head %>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125241308-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-125241308-1');
+    </script>
+  </head>
+  <body>
+    <div class="color-base">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGztWYFJv5qtbDPwYM8cqPN6LE7bdFr2M&callback=initGoogleMap"></script>
+  </body>
+</html>
