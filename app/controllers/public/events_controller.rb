@@ -15,7 +15,7 @@ class Public::EventsController < PublicApplicationController
 
         tzid = "Europe/Copenhagen"
         tz = TZInfo::Timezone.get(tzid)
-        timezone = tz.ical_timezone(event_start)
+        timezone = tz.ical_timezone(@events.first.begin_at)
         cal.add_timezone(timezone)
 
         filename = "#{@domain.domain}-events"
