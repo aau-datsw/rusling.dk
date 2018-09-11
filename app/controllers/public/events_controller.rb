@@ -14,9 +14,6 @@ class Public::EventsController < PublicApplicationController
         cal = Icalendar::Calendar.new
 
         tzid = "Europe/Copenhagen"
-        tz = TZInfo::Timezone.get(tzid)
-        timezone = tz.ical_timezone(@events.first.begin_at)
-        cal.add_timezone(timezone)
 
         filename = "#{@domain.domain}-events"
         if params[:format] == 'vcs'
