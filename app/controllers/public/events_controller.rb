@@ -10,6 +10,7 @@ class Public::EventsController < PublicApplicationController
 
     respond_to do |format|
       format.html
+      format.json { render json: @events.to_json }
       format.any(:ics, :vcs) do
         cal = Icalendar::Calendar.new
 
