@@ -261,9 +261,9 @@ def create_datsw(domain)
 
   boardgame = Event.find_or_initialize_by(title: "Brætspilsaften", educational_domain: datswdomain)
   boardgame.description = "Prosa inviterer jer til brætspilsaften, hvor I har mulighed for at hygge jer med nogle af jeres tutorer og medstuderende. Prosa har booket cafeen til os, og giver derudover den første omgang. Så tag dine gruppemedlemmer under armen, og kom til en hyggelig aften!"
-  boardgame.location = "Dice'n'Drinks"
-  boardgame.lat = 57.0465307
-  boardgame.lng = 9.9165076
+  boardgame.location = "Aalborg Brætspilscafé"
+  boardgame.lat = 57.0461006
+  boardgame.lng = 9.91350499
   boardgame.begin_at = "2018-09-17 16:30:00"
   boardgame.end_at = "2018-09-17 21:00:00"
   boardgame.save
