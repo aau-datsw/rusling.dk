@@ -37,9 +37,9 @@ ActiveAdmin.register Event do
     inputs 'Hvornår' do
       f.input :begin_at, as: :datetime_select
     end
-    inputs 'Hvem' do
-      f.input :planner, as: :select, collection: %w[ruskorps ida prosa studentersamfundet], include_blank: false
-    end
+    # inputs 'Hvem' do
+    #   f.input :planner, as: :select, collection: %w[ruskorps ida prosa studentersamfundet], include_blank: false
+    # end
     actions
   end
 

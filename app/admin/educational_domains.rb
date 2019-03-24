@@ -10,7 +10,7 @@ ActiveAdmin.register EducationalDomain do
       f.input :colors
     end
     inputs 'Menuer' do
-      f.input :primary_menu, as: :select, collection: Menu.all, include_blank: false
+      f.input :primary_menu, as: :select, collection: f.object.menus.pluck(:name, :id), include_blank: false
     end
     actions
   end
