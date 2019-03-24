@@ -8,6 +8,9 @@ class Public::SessionsController < PublicApplicationController
   def create
     @user = User.find_or_create_from_auth_hash(auth_hash)
     self.current_user = @user
+
+    return redirect_to '/admin' if self.current_user.present?
+
     redirect_to '/'
   end
 

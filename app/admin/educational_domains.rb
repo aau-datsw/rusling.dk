@@ -4,7 +4,7 @@ ActiveAdmin.register EducationalDomain do
 
   form title: 'Side' do |f|
     inputs 'Siden' do
-      f.input :default_page, as: :select, collection: Page.id.all, include_blank: false
+      f.input :default_page, as: :select, collection: f.object.pages.pluck(:title, :id), include_blank: false
       f.input :name
       f.input :domain
       f.input :colors

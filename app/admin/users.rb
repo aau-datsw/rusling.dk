@@ -29,8 +29,8 @@ ActiveAdmin.register User do
       f.input :email
     end
 
-    inputs 'Admin' do
-      if current_user.system_admin?
+    if current_user.system_admin?
+      inputs 'Admin' do
         f.input :educational_domain, as: :select, collection: EducationalDomain.all, include_blank: false
         f.input :domain_admin
         f.input :system_admin

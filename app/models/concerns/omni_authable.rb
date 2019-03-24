@@ -17,8 +17,9 @@ module OmniAuthable
 
     # Providers:
     def provider_developer(authhash = {})
-      u = User.find_by(email: authhash.email)
-      return u if u.oauth_logins.where(provider: 'developer', token: authhash.token).exists?
+      u = User.find_by(email: authhash.info.email)
+
+      return u
     end
 
     def provider_github(authhash = {})
