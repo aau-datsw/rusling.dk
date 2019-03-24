@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/ruslingdk
     docker:
-      - image: circleci/ruby:2.5.2-node
+      - image: circleci/ruby:2.6.2-node
         environment:
           PG_HOST: localhost
           PG_USER: ubuntu
