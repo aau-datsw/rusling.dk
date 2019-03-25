@@ -1,0 +1,19 @@
+<%= render partial: 'partials/index_header' %>
+<div class="padding">
+  <%= render partial: 'partials/body_text' %>
+  <%= render partial: 'partials/upload_button' %>
+</div>
+<% if @domain.MODEL_NAME_FOR_IMAGES.present? %>
+  <div class="flexbox">
+    <% @domain.MODEL_NAME_FOR_IMAGES.each do |item| %>
+      <div class="padding">
+        <div class="col-12 col-sm-12 col-lg-4">
+          <div class="box">
+            <div class="bg-img" style='background-image: url("<%= image_path(item["image"]) %>");'></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
