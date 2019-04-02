@@ -37,9 +37,19 @@ module OmniAuthable
     end
 
     def provider_saml(authhash = {})
-      p authhash
+      p authhash[:extras]
+      p authhash[:credentials]
+      p authhash[:info]
 
-      oauth_login(authhash)&.user || create_from_hash(authhash)
+      oauth_login(
+        authhash.merge(
+          uid: authhash[:extras][:raw_info][1]
+        )
+      )&.user || create_from_hash(
+        authhash.merge(
+          uid: authhash[:extras][:raw_info][1]
+        )
+      )
     end
 
     def oauth_login(authhash)
