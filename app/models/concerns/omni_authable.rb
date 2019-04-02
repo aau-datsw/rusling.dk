@@ -36,6 +36,12 @@ module OmniAuthable
       oauth_login(authhash)&.user.try(:authenticate, authhash[:info][:password]) || nil
     end
 
+    def provider_saml(authhash = {})
+      p authhash
+
+      oauth_login(authhash)&.user || create_from_hash(authhash)
+    end
+
     def oauth_login(authhash)
       OauthLogin.where(provider: authhash[:provider])
                 .where('expires_at IS NULL OR expires_at >= ?', authhash[:credentials][:expires_at])
