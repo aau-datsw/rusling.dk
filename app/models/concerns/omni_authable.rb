@@ -42,12 +42,14 @@ module OmniAuthable
       p authhash[:info]
 
       oauth_login(
-        authhash.merge(
-          uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]
+        authhash.deep_merge(
+          uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
+          info: { email: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]}
         )
       )&.user || create_from_hash(
-        authhash.merge(
-          uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]
+        authhash.deep_merge(
+          uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
+          info: { email: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]}
         )
       )
     end
