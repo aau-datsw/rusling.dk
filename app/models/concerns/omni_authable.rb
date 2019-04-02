@@ -64,7 +64,7 @@ module OmniAuthable
     def create_from_hash(authhash = {})
       # No user present - Proceed with creating a new one.
       this = self.new
-      return nil if this.respond_to?(:email=) && self.class.where(email: authhash[:info][:email]).exists?
+      return nil if this.respond_to?(:email=) && self.where(email: authhash[:info][:email]).exists?
 
       ApplicationRecord.transaction do
         this.firstname = authhash[:info][:first_name] if this.respond_to?(:firstname=)
