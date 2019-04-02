@@ -1,4 +1,5 @@
 OmniAuth.config.full_host = 'https://rusling.dk'
+OmniAuth.config.logger = Rails.logger if Rails.env.development?
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :developer unless Rails.env.production?
@@ -8,7 +9,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :saml,
     issuer: ENV.fetch('AAU_SAML_ISSUER', ''),
     idp_entity_id: "http://adfs.srv.aau.dk/adfs/services/trust",
-    name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+    name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
     idp_sso_target_url: "https://adfs.srv.aau.dk/adfs/ls/",
     idp_slo_target_url: "https://adfs.srv.aau.dk/adfs/ls/",
     idp_attribute_names: [
