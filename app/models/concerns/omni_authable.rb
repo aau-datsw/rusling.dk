@@ -37,17 +37,17 @@ module OmniAuthable
     end
 
     def provider_saml(authhash = {})
-      p authhash[:extra]
+      p authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"].first
       p authhash[:credentials]
       p authhash[:info]
 
       oauth_login(
         authhash.merge(
-          uid: authhash[:extra][:raw_info][1]
+          uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"].first
         )
       )&.user || create_from_hash(
         authhash.merge(
-          uid: authhash[:extra][:raw_info][1]
+          uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"].first
         )
       )
     end
