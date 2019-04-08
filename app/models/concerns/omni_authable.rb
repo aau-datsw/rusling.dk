@@ -44,8 +44,8 @@ module OmniAuthable
         uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
         info: {
           email: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
-          firstname: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"],
-          lastname: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"]
+          first_name: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"],
+          last_name: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"]
         }
       )
       p authhash[:info]
