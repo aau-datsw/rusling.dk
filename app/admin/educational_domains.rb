@@ -8,6 +8,7 @@ ActiveAdmin.register EducationalDomain do
       f.input :name
       f.input :domain
       f.input :colors
+      f.input :educations
     end
     inputs 'Menuer' do
       f.input :primary_menu, as: :select, collection: f.object.menus.pluck(:name, :id), include_blank: false
@@ -21,6 +22,7 @@ ActiveAdmin.register EducationalDomain do
     column :domain if current_user.system_admin?
     column :default_page
     column :primary_menu
+    column :educations
     column 'Colors' do |ed|
       raw(ed.colors.map { |(k, v)| "#{k}: #{v}" }.join(raw('<br />')))
     end

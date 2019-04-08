@@ -38,7 +38,7 @@ module OmniAuthable
 
     def provider_saml(authhash = {})
       p authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]
-      p authhash[:credentials]
+      p authhash[:extra][:raw_info]
       p authhash[:info]
 
       oauth_login(
