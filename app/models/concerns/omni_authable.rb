@@ -39,19 +39,17 @@ module OmniAuthable
     def provider_saml(authhash = {})
       p authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]
       p authhash[:extra][:raw_info]
-      p authhash[:info]
 
-      oauth_login(
-        authhash.deep_merge(
-          uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
-          info: { email: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]}
-        )
-      )&.user || create_from_hash(
-        authhash.deep_merge(
-          uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
-          info: { email: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]}
-        )
+      authhash = authhash.deep_merge(
+        uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
+        info: {
+          email: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
+          firstname: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"],
+          lastname: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"]
+        }
       )
+      p authhash[:info]
+      oauth_login(authhash)&.user || create_from_hash(authhash)
     end
 
     def oauth_login(authhash)
