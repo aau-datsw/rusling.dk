@@ -41,6 +41,11 @@
         <%= yield %>
       </div>
     </div>
+    <% if current_user.present? %>
+      <footer>
+        <p>Logget ind som: <%= current_user.name %> - <%= link_to "Gå til administration#{" for #{current_user.educational_domain.name}" if current_user.domain_admin?}", admin_root_path if current_user.domain_admin? || current_user.system_admin? %></p>
+      </footer>
+    <% end %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGztWYFJv5qtbDPwYM8cqPN6LE7bdFr2M&callback=initGoogleMap"></script>
   </body>
 </html>

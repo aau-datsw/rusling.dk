@@ -21,8 +21,8 @@ gem 'bootstrap', '~> 4.0'
 gem 'font-awesome-rails'
 gem 'momentjs-rails'
 
-gem 'active_material', github: 'vigetlabs/active_material'
 gem 'activeadmin'
+gem 'activeadmin_blaze_theme'
 gem 'activeadmin_json_editor', '~> 0.0.7'
 gem 'activeadmin_quill_editor'
 
