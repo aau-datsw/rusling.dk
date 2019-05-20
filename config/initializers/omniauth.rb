@@ -10,12 +10,11 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
   provider(
     :saml,
-    {
-      issuer: ENV.fetch('AAU_SAML_ISSUER', '')
-    }.merge(
-      idp_metadata_parser.parse_remote_to_hash(
-        "https://adfs.srv.aau.dk/federationmetadata/2007-06/federationmetadata.xml"
-      )
-    )
+    idp_metadata_parser.parse_remote_to_hash(
+      "https://adfs.srv.aau.dk/federationmetadata/2007-06/federationmetadata.xml"
+    ).merge({
+      issuer: ENV.fetch('AAU_SAML_ISSUER', ''),
+      name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+    })
   )
 end
