@@ -5,15 +5,24 @@ OmniAuth.config.failure_raise_out_environments = ['development', 'staging', 'pro
 Rails.application.config.middleware.use OmniAuth::Builder do
   idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
   provider :developer unless Rails.env.production?
-  provider :github,   ENV.fetch('GITHUB_KEY', ''),   ENV.fetch('GITHUB_SECRET', ''), scope: 'user,user:email'
-  provider :facebook, ENV.fetch('FACEBOOK_KEY', ''), ENV.fetch('FACEBOOK_SECRET', '')
+  provider(
+    :github,
+    Rails.application.credentials.dig(:login_credentials, :github, :key),
+    Rails.application.credentials.dig(:login_credentials, :github, :key),
+    scope: 'user,user:email'
+  )
+  provider(
+    :facebook,
+    Rails.application.credentials.dig(:login_credentials, :facebook, :key),
+    Rails.application.credentials.dig(:login_credentials, :facebook, :key)
+  )
 
   provider(
     :saml,
     idp_metadata_parser.parse_remote_to_hash(
       "https://adfs.srv.aau.dk/federationmetadata/2007-06/federationmetadata.xml"
     ).merge({
-      issuer: ENV.fetch('AAU_SAML_ISSUER', ''),
+      issuer: Rails.application.credentials.aau_saml_issuer,
       name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
     })
   )

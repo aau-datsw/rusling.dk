@@ -83,4 +83,6 @@ Rails.application.configure do
   config.action_controller.default_url_options = {
     host: 'rusling.dk'
   }
+
+  config.active_storage.service = :amazon
 end

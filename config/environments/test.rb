@@ -37,4 +37,6 @@ Rails.application.configure do
   config.action_controller.default_url_options = {
     host: "localhost"
   }
+
+  config.active_storage.service = :local
 end
