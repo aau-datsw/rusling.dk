@@ -2,7 +2,7 @@ ActiveAdmin.register Sponsor do
   includes :educational_domain
 
   permit_params do
-    permitted = %i[name image]
+    permitted = %i[name logo]
     permitted << :educational_domain_id if current_user.system_admin?
     permitted
   end
@@ -14,6 +14,7 @@ ActiveAdmin.register Sponsor do
       end
 
       f.input :name
+      f.input :logo, as: :file
     end
 
     actions
@@ -22,7 +23,7 @@ ActiveAdmin.register Sponsor do
   index do
     selectable_column
     column :name
-    column :image
+    column :logo
 
     column :educational_domain if current_user.system_admin?
     actions

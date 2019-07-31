@@ -2,7 +2,7 @@ ActiveAdmin.register Contact do
   includes :educational_domain
 
   permit_params do
-    permitted = %i[name number email description image]
+    permitted = %i[name number email description person_image]
     permitted << :educational_domain_id if current_user.system_admin?
     permitted
   end
@@ -17,7 +17,7 @@ ActiveAdmin.register Contact do
       f.input :number
       f.input :email
       f.input :description
-      f.input :image
+      f.input :person_image, as: :file
     end
 
     actions
