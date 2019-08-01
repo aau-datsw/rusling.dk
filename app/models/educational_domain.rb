@@ -12,7 +12,11 @@ class EducationalDomain < ApplicationRecord
   belongs_to :default_page, class_name: 'Page', optional: true
   # belongs_to :layout
 
+  # TODO: Implement something like this.
+  # has_json_field :colors, format: { primary_color: String, secondary_color: String }
+
   def self.default_domain
     where(domain: Rails.application.config.action_controller.default_url_options[:host]).first
   end
+
 end
