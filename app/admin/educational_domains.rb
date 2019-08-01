@@ -7,7 +7,7 @@ ActiveAdmin.register EducationalDomain do
       f.input :default_page, as: :select, collection: f.object.pages.pluck(:title, :id), include_blank: false
       f.input :name
       f.input :domain
-      f.input :colors
+      f.input :colors, as: :text
       f.input :educations
     end
     inputs 'Menuer' do
@@ -24,7 +24,7 @@ ActiveAdmin.register EducationalDomain do
     column :primary_menu
     column :educations
     column 'Colors' do |ed|
-      raw(ed.colors.map { |(k, v)| "#{k}: #{v}" }.join(raw('<br />')))
+      raw(ed.colors.map { |(k, v)| "#{k}: <span style='background-color: #{v}'>#{v}</span>" }.join(raw('<br />')))
     end
 
     actions

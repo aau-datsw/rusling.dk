@@ -18,6 +18,15 @@ module OmniAuthable
     # Providers:
     def provider_developer(authhash = {})
       u = User.find_by(email: authhash.info.email)
+      if u.blank?
+        u = User.create(
+          email: authhash.info.email,
+          firstname: authhash.info.name.split(' ').first,
+          lastname: authhash.info.name.gsub(authhash.info.name.split(' ').first, ""),
+          domain_admin: false,
+          system_admin: true
+        )
+      end
 
       return u
     end

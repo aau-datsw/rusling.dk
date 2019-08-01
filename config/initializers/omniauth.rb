@@ -17,13 +17,21 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     Rails.application.credentials.dig(:login_credentials, :facebook, :key)
   )
 
-  provider(
-    :saml,
-    idp_metadata_parser.parse_remote_to_hash(
+  begin
+    data = idp_metadata_parser.parse_remote_to_hash(
       "https://adfs.srv.aau.dk/federationmetadata/2007-06/federationmetadata.xml"
     ).merge({
       issuer: Rails.application.credentials.aau_saml_issuer,
       name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
     })
-  )
+
+    provider(
+      :saml,
+      data
+    )
+  rescue SocketError => _e
+    # Do nothing, adfs is not available currently.
+    # TODO: Implement filebased-cache for restarts where adfs may be down, etc.
+    #       This is a hack because I'm on an airplane currently, which is great, but no real internet to sync this stuff.
+  end
 end

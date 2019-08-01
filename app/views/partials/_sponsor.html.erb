@@ -1,10 +1,14 @@
 <% if @domain.sponsors.exists? %>
   <div class="sponsor-title">Samarbejdspartnere</div>
   <div class="flexbox">
-    <% @domain.sponsors.each do |item| %>
+    <% @domain.sponsors.each do |sponsor| %>
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="samarbejdspartner-box">
-          <img class="sponsor-img" src="<%= image_path(item.image) %>"/>
+          <% if sponsor.logo.attached? # #logo is an ActiveStorage-attachment %>
+            <%= image_tag sponsor.logo, class: 'sponsor-img' %>
+          <% elsif sponsor.image.present? # Fallback to string path from previous stuff %>
+            <img class="sponsor-img" src="<%= image_path(sponsor.image) %>" />
+          <% end %>
         </div>
       </div>
     <% end %>

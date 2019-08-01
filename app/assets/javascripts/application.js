@@ -15,6 +15,6 @@
 //= require popper
 //= require bootstrap
 //= require moment
-//= require moment/da.js
-//= require filterDiv.js
-//= require menuPadding.js
+//= require moment/da
+//= require filter_div
+//= require menu_padding

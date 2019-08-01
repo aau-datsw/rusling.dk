@@ -5,6 +5,5 @@ FactoryBot.define do
     colors {"#FFFFFF"}
     educations { ["uddannelse1", "uddannelse2", "uddannelse3"] }
     locale { "da" }
-
   end
 end

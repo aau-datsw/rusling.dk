@@ -1,6 +1,5 @@
 ActiveAdmin.register Menu do
   includes :educational_domain
-  json_editor
 
   permit_params do
     permitted = %i[name items]
@@ -11,7 +10,7 @@ ActiveAdmin.register Menu do
   form do |f|
     inputs 'Menu' do
       f.input :name
-      f.input :items, as: :jsonb
+      f.input :items, as: :text
     end
 
     actions
