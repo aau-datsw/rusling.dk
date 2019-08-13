@@ -1,7 +1,7 @@
 engdomain = EducationalDomain.find_or_initialize_by(domain: domain)
 engdomain.name = 'Engineering'
 engdomain.educations = ["Matematik", "Fysik", "Matematik-Økonomi", "Noget andet"]
-engdomain.colors = {"primary-color" => "#4d9e45", "secondary-color" => "#83bb7d"}
+engdomain.colors = {"primary_color" => "#4d9e45", "secondary_color" => "#83bb7d"}
 engdomain.locale = "da"
 engdomain.save
 

@@ -11,7 +11,7 @@
       locale: 'da',
       events: <%= raw(@events.map do |ev|
         base = { title: ev.title, start: ev.begin_at, url: "/events/#{ev.id}"}
-        base.merge!(backgroundColor: @domain.colors["primary-color"]) #if ev.planner == 'ruskorps'
+        base.merge!(backgroundColor: @domain.colors["primary_color"]) #if ev.planner == 'ruskorps'
         base
       end.to_json) %>/*,
       eventRender: function eventRender( event, element, view ) {

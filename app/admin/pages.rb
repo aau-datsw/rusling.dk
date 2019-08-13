@@ -20,16 +20,18 @@ ActiveAdmin.register Page do
 
   form title: 'Page' do |f|
     inputs 'Siden' do
-      if current_user.system_admin?
-        f.input :educational_domain, as: :select, collection: EducationalDomain.all, include_blank: false
-      end
+      f.input :educational_domain, as: :select, collection: EducationalDomain.all, include_blank: false if current_user.system_admin?
       f.input :slug
       f.input :title
       f.input :view_file
     end
     inputs 'Indhold' do
       f.input :content, as: :quill_editor
-      f.input :accordion, as: :jsonb
+
+      f.has_many :accordion, new_record: false, heading: 'Accordion Items' do |g|
+        g.input :title, label: 'title', placeholder: 'title', hint: false
+        g.input :content, label: 'content', placeholder: 'content', hint: false
+      end
     end
     actions
   end

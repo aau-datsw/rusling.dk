@@ -22,6 +22,7 @@ module AuthenticationHelper
   def authenticate_admin_user!
     return true if current_user&.domain_admin?
     return true if current_user&.system_admin?
+
     redirect_to root_path
   end
 

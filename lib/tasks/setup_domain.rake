@@ -35,12 +35,12 @@ namespace :rusling do
     ed_dom = EducationalDomain.find_or_initialize_by(domain: domain)
     ed_dom.name = ENV.fetch('EDU', 'Skabelon')
     ed_dom.educations = [ENV.fetch('EDU', 'Skabelon')]
-    ed_dom.colors = { 'primary-color' => '#eb7115', 'secondary-color' => '#f19c5c' }
+    ed_dom.colors = { 'primary_color' => '#eb7115', 'secondary_color' => '#f19c5c' }
     ed_dom.locale = ENV.fetch('LANG', 'da')[0..2]
     ed_dom.save!
 
     puts 'Creating Menu'
-    menu = ed_dom.menus.find_or_initialize_by(name: 'BaitIxdInf Menu')
+    menu = ed_dom.menus.find_or_initialize_by(name: "#{ENV.fetch('EDU', 'Skabelon')} Menu")
     menu.items = [
       {
         'name' => 'Information',
@@ -163,17 +163,18 @@ namespace :rusling do
     event.location = 'Honnørkajen'
     event.lat = 57.0502987
     event.lng = 9.9229435
-    event.begin_at = '2018-09-03 08:30:00'
+    event.begin_at = '2019-09-02 08:30:00'
     event.save
 
     ed_dom.update(primary_menu: menu, default_page: home_page)
-
-    Cloudflare.connect(key: cf_key, email: cf_mail) do |connection|
-      zone = connection.zones.find_by_name('rusling.dk')
-      begin
-        zone.dns_records.create('CNAME', domain.gsub('rusling.dk', ''), 'rusling.dk', proxied: true)
-      rescue StandardError
-        puts "Failed to create DNS for #{domain}"
+    if cf_key.present? && cf_mail.present?
+      Cloudflare.connect(key: cf_key, email: cf_mail) do |connection|
+        zone = connection.zones.find_by_name('rusling.dk')
+        begin
+          zone.dns_records.create('CNAME', domain.gsub('rusling.dk', ''), 'rusling.dk', proxied: true)
+        rescue StandardError
+          puts "Failed to create DNS for #{domain}"
+        end
       end
     end
   end

@@ -2,7 +2,7 @@ puts "creating datsw"
 datswdomain = EducationalDomain.find_or_initialize_by(domain: domain)
 datswdomain.name = 'Datalogi og Software'
 datswdomain.educations = ["Datalogi", "Software"]
-datswdomain.colors = {"primary-color" => "#eb7115", "secondary-color" => "#f19c5c"}
+datswdomain.colors = {"primary_color" => "#eb7115", "secondary_color" => "#f19c5c"}
 datswdomain.locale = "da"
 datswdomain.save
 

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Public::PagesController, type: :controller do
-
   describe 'GET #show' do
     let(:accrordion_page) { create :page, :accordion, :with_domain }
     let(:contacts_page) { create :page, :contacts, :with_domain }

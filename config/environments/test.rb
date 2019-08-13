@@ -35,7 +35,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_controller.default_url_options = {
-    host: "localhost"
+    host: 'localhost'
   }
 
   config.active_storage.service = :local

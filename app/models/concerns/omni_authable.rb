@@ -12,6 +12,7 @@ module OmniAuthable
   class_methods do
     def find_or_create_from_auth_hash(authhash)
       return self.send("provider_#{authhash[:provider]}", authhash) if self.respond_to?("provider_#{authhash[:provider]}")
+
       nil
     end
 
@@ -22,7 +23,7 @@ module OmniAuthable
         u = User.create(
           email: authhash.info.email,
           firstname: authhash.info.name.split(' ').first,
-          lastname: authhash.info.name.gsub(authhash.info.name.split(' ').first, ""),
+          lastname: authhash.info.name.gsub(authhash.info.name.split(' ').first, ''),
           domain_admin: false,
           system_admin: true
         )
@@ -46,15 +47,15 @@ module OmniAuthable
     end
 
     def provider_saml(authhash = {})
-      p authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]
+      p authhash[:extra][:raw_info]['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn']
       p authhash[:extra][:raw_info]
 
       authhash = authhash.deep_merge(
-        uid: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
+        uid: authhash[:extra][:raw_info]['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn'],
         info: {
-          email: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
-          first_name: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"],
-          last_name: authhash[:extra][:raw_info]["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"]
+          email: authhash[:extra][:raw_info]['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn'],
+          first_name: authhash[:extra][:raw_info]['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'],
+          last_name: authhash[:extra][:raw_info]['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname']
         }
       )
       p authhash[:info]

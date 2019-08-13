@@ -8,6 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'jquery-rails'
+gem 'jsonb_accessor', '~> 1.0.0'
 gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.2.2'
@@ -35,8 +36,8 @@ gem 'omniauth-saml'
 gem 'non-stupid-digest-assets'
 
 gem 'icalendar'
-gem 'RedCloth'
 gem 'redcarpet'
+gem 'RedCloth'
 
 gem 'cloudflare'
 gem 'cloudflare-rails'
@@ -50,9 +51,9 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
 
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-  gem 'factory_bot_rails'
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'selenium-webdriver'
 
   gem 'dotenv-rails'
 end

@@ -1,6 +1,6 @@
 OmniAuth.config.full_host = 'https://rusling.dk'
 OmniAuth.config.logger = Rails.logger if Rails.env.development?
-OmniAuth.config.failure_raise_out_environments = ['development', 'staging', 'production']
+OmniAuth.config.failure_raise_out_environments = %w[development staging production]
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new

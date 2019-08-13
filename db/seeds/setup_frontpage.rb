@@ -1,5 +1,5 @@
 dom = EducationalDomain.find_or_initialize_by(domain: domain)
-dom.colors = {"primary-color" => "#211A52"}
+dom.colors = {"primary_color" => "#211A52"}
 dom.name = 'Rusling.dk'
 dom.locale = 'da'
 dom.save!

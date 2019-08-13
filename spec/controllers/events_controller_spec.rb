@@ -40,7 +40,7 @@ RSpec.describe Public::EventsController, type: :controller do
         get :index, format: :json
 
         expect(JSON.parse(response.body)).to be_a Array
-        expect(JSON.parse(response.body)).to satisfy { |value| value.count == 1 }
+        expect(JSON.parse(response.body)).to(satisfy { |value| value.count == 1 })
       end
     end
   end

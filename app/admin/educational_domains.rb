@@ -1,5 +1,5 @@
 ActiveAdmin.register EducationalDomain do
-  permit_params :primary_menu_id, :default_page_id, :name, :domain, :color_id
+  permit_params :primary_menu_id, :default_page_id, :name, :domain, :primary_color, :secondary_color, educations: []
   includes :primary_menu, :default_page
 
   form title: 'Side' do |f|
@@ -7,8 +7,9 @@ ActiveAdmin.register EducationalDomain do
       f.input :default_page, as: :select, collection: f.object.pages.pluck(:title, :id), include_blank: false
       f.input :name
       f.input :domain
-      f.input :colors, as: :text
-      f.input :educations
+      f.input :primary_color
+      f.input :secondary_color
+      f.input :educations, as: :array
     end
     inputs 'Menuer' do
       f.input :primary_menu, as: :select, collection: f.object.menus.pluck(:name, :id), include_blank: false
@@ -24,7 +25,10 @@ ActiveAdmin.register EducationalDomain do
     column :primary_menu
     column :educations
     column 'Colors' do |ed|
-      raw(ed.colors.map { |(k, v)| "#{k}: <span style='background-color: #{v}'>#{v}</span>" }.join(raw('<br />')))
+      raw([
+        "primary_color: #{ed.primary_color || 'N/A'}",
+        "secondary_color: #{ed.secondary_color || 'N/A'}"
+      ].join('<br />'))
     end
 
     actions

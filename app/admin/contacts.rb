@@ -9,9 +9,7 @@ ActiveAdmin.register Contact do
 
   form do |f|
     inputs 'Menu' do
-      if current_user.system_admin?
-        f.input :educational_domain, as: :select, collection: EducationalDomain.all, include_blank: false
-      end
+      f.input :educational_domain, as: :select, collection: EducationalDomain.all, include_blank: false if current_user.system_admin?
 
       f.input :name
       f.input :number

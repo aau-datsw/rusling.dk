@@ -12,11 +12,17 @@ class EducationalDomain < ApplicationRecord
   belongs_to :default_page, class_name: 'Page', optional: true
   # belongs_to :layout
 
-  # TODO: Implement something like this.
-  # has_json_field :colors, format: { primary_color: String, secondary_color: String }
+  before_save ->(c) { c.educations.reject!(&:blank?) }
+
+  has_json_editable(
+    :colors,
+    format: {
+      primary_color: :string,
+      secondary_color: :string
+    }
+  )
 
   def self.default_domain
     where(domain: Rails.application.config.action_controller.default_url_options[:host]).first
   end
-
 end

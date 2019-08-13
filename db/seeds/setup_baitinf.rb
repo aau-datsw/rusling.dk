@@ -2,7 +2,7 @@ puts "creating baitixdinf domain"
 baitixdinfdomain = EducationalDomain.find_or_initialize_by(domain: domain)
 baitixdinfdomain.name = 'Informationsteknologi, Interaktionsdesign og Informatik'
 baitixdinfdomain.educations = ["Informationsteknologi", "Interaktionsdesign", "Informatik"]
-baitixdinfdomain.colors = {"primary-color" => "#eb7115", "secondary-color" => "#f19c5c"}
+baitixdinfdomain.colors = {"primary_color" => "#eb7115", "secondary_color" => "#f19c5c"}
 baitixdinfdomain.locale = "da"
 baitixdinfdomain.save
 

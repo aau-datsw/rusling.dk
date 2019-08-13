@@ -1,0 +1,32 @@
+=reset-aa-button
+  background: none
+  border-radius: 0
+  border: 0
+  box-shadow: none
+  line-height: 1
+  padding: 0
+  text-shadow: none
+  vertical-align: middle
+  &:not(.disabled)
+    &:hover,
+    &:active,
+    &:focus
+      background: none
+      border: 0
+      box-shadow: none
+
+.array-action--add,
+.array-action--remove
+  +reset-aa-button
+  font-size: rem(15)
+
+.array-action--add
+  color: $color-success
+
+.array-action--remove
+  color: $color-error
+  &.can-undo
+    color: $color-success
+.input-group--array
+  display: inline-block
+  width: calc(80% - 22px)

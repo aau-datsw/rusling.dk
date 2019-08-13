@@ -4,17 +4,17 @@
 # You can define all roles on a single server, or split them:
 
 server ENV.fetch('AAU_SSHGW_SERVER', ''),
-  user: 'deploy',
-  roles: %w[app db web],
-  ssh_options: {
-    proxy: Net::SSH::Proxy::Command.new(
-      if !ENV['SSHPASS'].nil?
-        "sshpass -e ssh #{ENV.fetch('AAU_SSHGW_USER', '')}@sshgw.aau.dk -W %h:%p"
-      else
-        "ssh #{ENV.fetch('AAU_SSHGW_USER', '')}@sshgw.aau.dk -W %h:%p"
-      end
-    )
-  }
+       user: 'deploy',
+       roles: %w[app db web],
+       ssh_options: {
+         proxy: Net::SSH::Proxy::Command.new(
+           if !ENV['SSHPASS'].nil?
+             "sshpass -e ssh #{ENV.fetch('AAU_SSHGW_USER', '')}@sshgw.aau.dk -W %h:%p"
+           else
+             "ssh #{ENV.fetch('AAU_SSHGW_USER', '')}@sshgw.aau.dk -W %h:%p"
+           end
+         )
+       }
 
 # Configuration
 # =============

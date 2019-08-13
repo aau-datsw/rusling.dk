@@ -10,7 +10,12 @@ ActiveAdmin.register Menu do
   form do |f|
     inputs 'Menu' do
       f.input :name
-      f.input :items, as: :text
+      f.has_many :items, new_record: false, heading: 'Menu Items' do |g|
+        g.input :link, label: 'link', placeholder: 'link', hint: false
+        g.input :name, label: 'name', placeholder: 'name', hint: false
+        g.input :image_url, label: 'image_url', placeholder: 'image_url', hint: false
+        g.input :description, label: 'description', placeholder: 'description', hint: false
+      end
     end
 
     actions
