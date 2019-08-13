@@ -7,7 +7,11 @@
     <% @domain.contacts.each do |item| %>
       <div class="col-12 col-sm-12 col-lg-4">
         <div class="box">
-          <div class="bg-img" style='background-image: url("<%= image_path(item["image"]) %>");'></div>
+          <% if item.person_image.attached? # #logo is an ActiveStorage-attachment %>
+            <div class="bg-img" style='background-image: url("<%= rails_blob_path(item.person_image) %>");'></div>
+          <% elsif item.image.present? # Fallback to string path from previous stuff %>
+            <div class="bg-img" style='background-image: url("<%= image_path(item.image) %>");'></div>
+          <% end %>
           <div class="overlay"></div>
           <div class="info"><%= item["name"] %><br/><%= item["email"] %><br/><%= item["number"] %></div>
           <div class="description"><%= item["description"] %></div>
