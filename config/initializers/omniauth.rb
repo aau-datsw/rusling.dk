@@ -24,6 +24,10 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       issuer: Rails.application.credentials.aau_saml_issuer,
       name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
     })
+    puts Rails.application.credentials.aau_saml_issuer
+    puts Rails.application.credentials.aau_saml_issuer
+    puts Rails.application.credentials.aau_saml_issuer
+    puts Rails.application.credentials.aau_saml_issuer
 
     provider(
       :saml,
