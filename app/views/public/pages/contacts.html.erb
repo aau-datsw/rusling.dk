@@ -13,8 +13,8 @@
             <div class="bg-img" style='background-image: url("<%= image_path(item.image) %>");'></div>
           <% end %>
           <div class="overlay"></div>
-          <div class="info"><%= item["name"] %><br/><%= item["email"] %><br/><%= item["number"] %></div>
-          <div class="description"><%= item["description"] %></div>
+          <div class="info"><%= item["description"] %></div>
+          <div class="description"><%= item["name"] %><br/><%= item["email"] %><br/><%= item["number"] %></div>
         </div>
       </div>
     <% end %>
