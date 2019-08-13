@@ -26,11 +26,15 @@ class RuslingAuthorization < ActiveAdmin::AuthorizationAdapter
       return true if subject.educational_domain == user.educational_domain
     end
 
+    if subject.is_a?(::Sponsor)
+      return true if subject.educational_domain == user.educational_domain
+    end
+
     if subject.is_a?(::ActiveAdmin::Page)
       return action == :read if subject.name == 'Dashboard'
     end
 
-    return action == :read if [User, EducationalDomain, Event, Page, Menu].include? subject
+    return action == :read if [User, EducationalDomain, Event, Page, Menu, Sponsor].include? subject
 
     false
   end
