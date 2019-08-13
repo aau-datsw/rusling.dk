@@ -6,7 +6,7 @@ ActiveAdmin.register EducationalDomain do
     inputs 'Siden' do
       f.input :default_page, as: :select, collection: f.object.pages.pluck(:title, :id), include_blank: false
       f.input :name
-      f.input :domain
+      f.input :domain if current_user.system_admin?
       f.input :primary_color
       f.input :secondary_color
       f.input :educations, as: :array
