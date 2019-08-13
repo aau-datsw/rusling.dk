@@ -1,7 +1,7 @@
 ActiveAdmin.register Page do
   includes :educational_domain
   permit_params do
-    params = %i[slug title view_file content accordion]
+    params = [:slug, :title, :view_file, :content, accordion_attributes: [:title, :content]]
     params += [:educational_domain_id] if current_user.system_admin?
     params
   end

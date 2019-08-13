@@ -2,7 +2,7 @@ ActiveAdmin.register Menu do
   includes :educational_domain
 
   permit_params do
-    permitted = %i[name items]
+    permitted = [:name, items_attributes: [:link, :name, :image_url, :description]]
     permitted << :educational_domain_id if current_user.system_admin?
     permitted
   end
