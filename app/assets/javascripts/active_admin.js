@@ -1,11 +1,4 @@
 //= require active_admin/base
+//= require activeadmin/quill_editor/quill
+//= require activeadmin/quill_editor_input
 //= require array-input
-//= require tinymce
-//= require tinymce/themes/silver/theme
-
-$(document).ready(function() {
-  tinyMCE.init({
-    selector: '.tinymce-input',
-    menubar: false
-  });
-});

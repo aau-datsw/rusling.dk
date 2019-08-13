@@ -25,7 +25,6 @@ gem 'momentjs-rails'
 
 gem 'activeadmin'
 gem 'activeadmin_blaze_theme'
-gem 'activeadmin_json_editor', '~> 0.0.7'
 gem 'activeadmin_quill_editor'
 
 gem 'bcrypt', '~> 3.1.7'

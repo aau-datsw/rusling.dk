@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     RedCloth (4.3.2)
-    ace-rails-ap (4.2)
     actioncable (5.2.3)
       actionpack (= 5.2.3)
       nio4r (~> 2.0)
@@ -40,9 +39,6 @@ GEM
       sprockets-es6 (~> 0.9, >= 0.9.2)
     activeadmin_blaze_theme (0.2.0)
       activeadmin
-    activeadmin_json_editor (0.0.9)
-      ace-rails-ap
-      railties (>= 3.0)
     activeadmin_quill_editor (0.2.0)
       activeadmin (>= 1.0)
     activejob (5.2.3)
@@ -439,7 +435,6 @@ DEPENDENCIES
   RedCloth
   activeadmin
   activeadmin_blaze_theme
-  activeadmin_json_editor (~> 0.0.7)
   activeadmin_quill_editor
   aws-sdk-s3
   bcrypt (~> 3.1.7)
