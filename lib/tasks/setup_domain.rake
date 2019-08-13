@@ -1,6 +1,5 @@
 namespace :rusling do
-  desc 'Setup domain from ENV'
-  task setup_domain: :environment do
+  def setup_domain(domain, ed_name, color)
     html_parse = lambda do |input, parser|
       if parser == 'textile'
         RedCloth.new(input).to_html
@@ -27,20 +26,19 @@ namespace :rusling do
       end
     end
 
-    domain  = ENV['DOMAIN']
     cf_key  = ENV['CLOUDFLARE_KEY']
     cf_mail = ENV['CLOUDFLARE_EMAIL']
 
     puts "Creating domain: '#{domain}'"
     ed_dom = EducationalDomain.find_or_initialize_by(domain: domain)
-    ed_dom.name = ENV.fetch('EDU', 'Skabelon')
-    ed_dom.educations = [ENV.fetch('EDU', 'Skabelon')]
-    ed_dom.colors = { 'primary_color' => '#eb7115', 'secondary_color' => '#f19c5c' }
-    ed_dom.locale = ENV.fetch('LANG', 'da')[0..2]
+    ed_dom.name = ed_name
+    ed_dom.educations = ed_name.split('/')
+    ed_dom.colors = { 'primary_color' => color, 'secondary_color' => color }
+    ed_dom.locale = 'da'
     ed_dom.save!
 
     puts 'Creating Menu'
-    menu = ed_dom.menus.find_or_initialize_by(name: "#{ENV.fetch('EDU', 'Skabelon')} Menu")
+    menu = ed_dom.menus.find_or_initialize_by(name: "#{ed_name} Menu")
     menu.items = [
       {
         'name' => 'Information',
@@ -178,4 +176,11 @@ namespace :rusling do
       end
     end
   end
+
+  task get_educations: :environment do
+    CSV.foreach(Rails.root.join('lib', 'tasks', 'uddannelser.csv'), col_sep: ';', headers: true) do |c|
+      setup_domain(c['domain'].downcase, c['studier'], c['colorhex'])
+    end
+  end
+
 end
