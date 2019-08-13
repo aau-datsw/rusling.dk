@@ -4,20 +4,20 @@ ActiveAdmin.register_page 'Dashboard' do
   content title: proc { I18n.t('active_admin.dashboard') } do
     columns do
       column do
-        panel 'Generate Bills' do
-          para 'hello'
+        panel 'Næste event' do
+          para "Næste event er #{current_user.domain_admin? ? current_user.educational_domain.events.upcoming.first.pretty_display : Event.upcoming.first.pretty_display}"
         end
       end
 
       column do
-        panel 'Pay Bills' do
-          para 'no bill 4 me'
+        panel 'Users' do
+          para "Der er #{current_user.domain_admin? ? current_user.educational_domain.users.count : User.count} bruger med adgang."
         end
       end
 
       column do
-        panel 'Pay Bills' do
-          para 'no bill 4 me'
+        panel 'Domæner og Studier' do
+          para "Der er i alt #{EducationalDomain.count - 1} studier aktive på rusling.dk"
         end
       end
     end
