@@ -38,6 +38,7 @@ gem 'non-stupid-digest-assets'
 gem 'icalendar'
 gem 'redcarpet'
 gem 'RedCloth'
+gem 'tinymce-rails'
 
 gem 'cloudflare'
 gem 'cloudflare-rails'

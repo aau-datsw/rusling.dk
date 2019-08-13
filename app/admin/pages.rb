@@ -26,11 +26,13 @@ ActiveAdmin.register Page do
       f.input :view_file
     end
     inputs 'Indhold' do
-      f.input :content, as: :quill_editor
+      f.input :content, type: :text, input_html: { class: "tinymce-input" }
 
-      f.has_many :accordion, new_record: false, heading: 'Accordion Items' do |g|
-        g.input :title, label: 'title', placeholder: 'title', hint: false
-        g.input :content, label: 'content', placeholder: 'content', hint: false
+      if f.object.view_file == 'accordion'
+        f.has_many :accordion, new_record: false, heading: 'Accordion Items' do |g|
+          g.input :title, label: 'Titel', placeholder: 'title', hint: false
+          g.input :content, label: 'Indhold', placeholder: 'content', hint: false, type: :text, input_html: { class: "tinymce-input" }
+        end
       end
     end
     actions
