@@ -202,11 +202,10 @@ nav {
     }
     &.dropdown-item {
       line-height: 2;
-      padding: 0;
       text-align: center;
       font-family: 'Source San Pro', sans-serif;
       color: white;
-      height: inherit;
+      white-space: normal;
     }
     &.dropdown-item:nth-child(even){
       background: #808080;
