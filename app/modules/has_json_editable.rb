@@ -42,7 +42,7 @@ module HasJsonEditable
         )
 
         define_method(field_name) do
-          read_attribute(field_name).map { |obj| klass.new(obj) }
+          read_attribute(field_name)&.map { |obj| klass.new(obj) } || []
         end
 
         define_method("#{field_name}_attributes=") do |attributes|

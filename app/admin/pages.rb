@@ -23,7 +23,7 @@ ActiveAdmin.register Page do
       f.input :educational_domain, as: :select, collection: EducationalDomain.all, include_blank: false if current_user.system_admin?
       f.input :slug
       f.input :title
-      f.input :view_file
+      f.input :view_file, as: :select, collection: [:index, :accordion, :contacts, :frontpage, :show], include_blank: false
     end
     inputs 'Indhold' do
       f.input :content, type: :text, input_html: { class: "tinymce-input" }
