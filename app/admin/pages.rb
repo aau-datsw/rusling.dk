@@ -26,12 +26,12 @@ ActiveAdmin.register Page do
       f.input :view_file, as: :select, collection: [:index, :accordion, :contacts, :frontpage, :show], include_blank: false
     end
     inputs 'Indhold' do
-      f.input :content, type: :text, input_html: { class: "tinymce" }
+      f.input :content, type: :text, input_html: { class: "tinymce-input" }
 
       if f.object.view_file == 'accordion'
         f.has_many :accordion, new_record: false, heading: 'Accordion Items' do |g|
           g.input :title, label: 'Titel', placeholder: 'title', hint: false
-          g.input :content, label: 'Indhold', placeholder: 'content', hint: false, type: :text, input_html: { class: "tinymce" }
+          g.input :content, label: 'Indhold', placeholder: 'content', hint: false, type: :text, input_html: { class: "tinymce-input" }
         end
       end
     end

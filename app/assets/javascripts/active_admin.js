@@ -1,10 +1,11 @@
 //= require active_admin/base
 //= require array-input
-//= require tinymce-jquery
+//= require tinymce
 
-
-$(document).ready(function(){
+$(document).ready(function() {
   tinyMCE.init({
-    selector: 'textarea.tinymce'
+    selector: '.tinymce-input',
+    theme: 'silver',
+    menubar: false
   });
 });
