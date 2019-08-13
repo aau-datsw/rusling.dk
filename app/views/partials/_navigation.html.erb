@@ -7,9 +7,16 @@
           <h4>Vælg din uddannelse &#9660</h4>
         </a>
         <div class="dropdown-menu">
-        <%  EducationalDomain.all.each do |item| %>
-          <% next if item.id == default_domain_id %>
-            <%= render partial: "partials/navigation/navitem.html.erb", locals: { item: item } %>
+        <% domain_list = {} %>
+        <% EducationalDomain.order(:name).all.each do |item| %>
+          <% item.educations.each { |i| domain_list[i] ||= item } %>
+        <% end %>
+
+        <% domain_list.sort_by { |(k,v)| k }.each do |key, obj| %>
+          <% next if obj.id == default_domain_id %>
+            <a class="dropdown-item" href="http://<%= obj.domain %>">
+              <div class="menu-text"><%= key %></div>
+            </a>
           <% end %>
         </div>
       </div>
