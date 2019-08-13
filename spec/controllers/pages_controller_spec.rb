@@ -11,35 +11,35 @@ RSpec.describe Public::PagesController, type: :controller do
     context 'with accordion view_file' do
       it 'returns http success' do
         get :show, params: { slug: accrordion_page.slug }
-        expect(response).to have_http_status(:success)
+        expect(response.successful?).to be_truthy
       end
     end
 
     context 'with contacts view_file' do
       it 'returns http success' do
         get :show, params: { slug: contacts_page.slug }
-        expect(response).to have_http_status(:success)
+        expect(response.successful?).to be_truthy
       end
     end
 
     context 'with frontpage view_file' do
       it 'returns http success' do
         get :show, params: { slug: frontpage_page.slug }
-        expect(response).to have_http_status(:success)
+        expect(response.successful?).to be_truthy
       end
     end
 
     context 'with index view_file' do
       it 'returns http success' do
         get :show, params: { slug: index_page.slug }
-        expect(response).to have_http_status(:success)
+        expect(response.successful?).to be_truthy
       end
     end
 
     context 'with show view_file' do
       it 'returns http success' do
         get :show, params: { slug: show_page.slug }
-        expect(response).to have_http_status(:success)
+        expect(response.successful?).to be_truthy
       end
     end
   end

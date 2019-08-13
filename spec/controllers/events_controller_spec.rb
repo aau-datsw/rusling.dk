@@ -9,7 +9,7 @@ RSpec.describe Public::EventsController, type: :controller do
       it 'returns http success' do
         get :index, format: :html
 
-        expect(response).to have_http_status(:success)
+        expect(response.successful?).to be_truthy
       end
     end
 
@@ -17,7 +17,7 @@ RSpec.describe Public::EventsController, type: :controller do
       it 'returns http success' do
         get :index, format: :ics
 
-        expect(response).to have_http_status(:success)
+        expect(response.successful?).to be_truthy
       end
     end
 
@@ -25,7 +25,7 @@ RSpec.describe Public::EventsController, type: :controller do
       it 'returns http success' do
         get :index, format: :vcs
 
-        expect(response).to have_http_status(:success)
+        expect(response.successful?).to be_truthy
       end
     end
 
@@ -33,7 +33,7 @@ RSpec.describe Public::EventsController, type: :controller do
       it 'returns http success' do
         get :index, format: :json
 
-        expect(response).to have_http_status(:success)
+        expect(response.successful?).to be_truthy
       end
 
       it 'returns valid JSON' do
