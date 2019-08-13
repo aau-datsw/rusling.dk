@@ -13,6 +13,7 @@ gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.2.2'
 gem 'sentry-raven'
+gem 'aws-sdk-s3'
 
 gem 'redis-rails'
 gem 'sass-rails', '~> 5.0'
