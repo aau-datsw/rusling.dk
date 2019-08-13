@@ -50,7 +50,8 @@ class RuslingAuthorization < ActiveAdmin::AuthorizationAdapter
       return action == :read if subject.name == 'Dashboard'
     end
 
-    return action == :read if [User, EducationalDomain, Event, Page, Menu, Sponsor, Contact].include? subject
+    return action.in?([:read, :create]) if [Event, Page, Menu, Sponsor, Contact].include?(subject)
+    return action.in?([:read]) if [User, EducationalDomain].include?(subject)
 
     false
   end
