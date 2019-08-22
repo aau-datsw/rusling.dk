@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_04_104927) do
+ActiveRecord::Schema.define(version: 2019_08_22_120808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accordion_items", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.bigint "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["page_id"], name: "index_accordion_items_on_page_id"
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -60,6 +69,14 @@ ActiveRecord::Schema.define(version: 2019_08_04_104927) do
     t.index ["educational_domain_id"], name: "index_contacts_on_educational_domain_id"
   end
 
+  create_table "domain_images", force: :cascade do |t|
+    t.string "name"
+    t.bigint "educational_domain_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["educational_domain_id"], name: "index_domain_images_on_educational_domain_id"
+  end
+
   create_table "educational_domains", force: :cascade do |t|
     t.string "name"
     t.string "domain"
@@ -87,6 +104,17 @@ ActiveRecord::Schema.define(version: 2019_08_04_104927) do
     t.datetime "updated_at", null: false
     t.datetime "end_at"
     t.index ["educational_domain_id"], name: "index_events_on_educational_domain_id"
+  end
+
+  create_table "menu_items", force: :cascade do |t|
+    t.string "link"
+    t.string "name"
+    t.string "image_url"
+    t.string "description"
+    t.bigint "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_menu_items_on_menu_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -153,6 +181,7 @@ ActiveRecord::Schema.define(version: 2019_08_04_104927) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contacts", "educational_domains"
+  add_foreign_key "domain_images", "educational_domains"
   add_foreign_key "educational_domains", "menus", column: "primary_menu_id", on_delete: :nullify
   add_foreign_key "educational_domains", "menus", column: "secondary_menu_id", on_delete: :nullify
   add_foreign_key "events", "educational_domains"

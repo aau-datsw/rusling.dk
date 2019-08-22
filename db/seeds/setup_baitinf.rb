@@ -7,7 +7,7 @@ baitixdinfdomain.locale = "da"
 baitixdinfdomain.save
 
 baitixdinfmenu = baitixdinfdomain.menus.find_or_initialize_by(name: "BaitIxdInf Menu")
-baitixdinfmenu.items = [
+baitixdinfmenu.menu_items_attributes = [
   {
     "name" => "Information",
     "description" => "Studiestartsdagen og andet",

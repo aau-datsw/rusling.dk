@@ -5,6 +5,7 @@ class EducationalDomain < ApplicationRecord
   has_many :contacts
   has_many :sponsors
   has_many :users
+  has_many :domain_images
 
   belongs_to :primary_menu, class_name: 'Menu', optional: true
   belongs_to :secondary_menu, class_name: 'Menu', optional: true

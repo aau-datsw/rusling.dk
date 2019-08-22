@@ -7,7 +7,7 @@ datswdomain.locale = "da"
 datswdomain.save
 
 datswmenu = datswdomain.menus.find_or_initialize_by(name: "DatSW Menu")
-datswmenu.items = [
+datswmenu.menu_items_attributes = [
   {
     "name" => "Vigtig viden",
     "description" => "Ligegyldig info",

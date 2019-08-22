@@ -1,7 +1,7 @@
 ActiveAdmin.register Page do
   includes :educational_domain
   permit_params do
-    params = [:slug, :title, :view_file, :content, accordion_attributes: [:title, :content]]
+    params = [:slug, :title, :view_file, :content, accordion_items_attributes: [:title, :content, :_destroy, :id]]
     params += [:educational_domain_id] if current_user.system_admin?
     params
   end
@@ -11,7 +11,11 @@ ActiveAdmin.register Page do
     column :slug
     column :title
     column 'content' do |p|
-      truncate(p.content, omision: '...', length: 100)
+      if p.view_file == 'accordion'
+        "Accordion: #{p.accordion_items.count} stk"
+      else
+        truncate(p.content, omision: '...', length: 100)
+      end
     end
 
     column :educational_domain if current_user.system_admin?
@@ -29,9 +33,9 @@ ActiveAdmin.register Page do
       f.input :content, as: :quill_editor
 
       if f.object.view_file == 'accordion'
-        f.has_many :accordion, new_record: false, heading: 'Accordion Items' do |g|
-          g.input :title, label: 'Titel', placeholder: 'title', hint: false
-          g.input :content, label: 'Indhold', placeholder: 'content', hint: false, as: :quill_editor
+        f.has_many :accordion_items, allow_destroy: true do |g|
+          g.input :title
+          g.input :content
         end
       end
     end

@@ -6,7 +6,7 @@ engdomain.locale = "da"
 engdomain.save
 
 meneng = engdomain.menus.find_or_initialize_by(name: "Eng Menu")
-meneng.items = [
+meneng.menu_items_attributes = [
     {
       "name" => "FAQ",
       "description" => "",

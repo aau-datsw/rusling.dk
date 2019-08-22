@@ -39,7 +39,7 @@ namespace :rusling do
 
     puts 'Creating Menu'
     menu = ed_dom.menus.find_or_initialize_by(name: "#{ed_name} Menu")
-    menu.items = [
+    menu.menu_items_attributes = [
       {
         'name' => 'Information',
         'description' => 'Studiestartsdagen og andet',

@@ -3,16 +3,16 @@
   <%= render partial: 'partials/body_text' %>
 </div>
 <div class="flexbox">
-  <% @domain.primary_menu.items.each_with_index do |item, i| %>
+  <% @domain.primary_menu.menu_items.each_with_index do |item, i| %>
     <div class="col-12 col-sm-12 col-lg-4">
       <div class="box">
         <a class='menu-link' href='<%= item["link"] %>'></a>
-        <div class="filters" style='background-image: url("<%= image_url(item["image_url"]) %>");'>
+        <div class="filters" style='background-image: url("<%= image_url(item.image_url) %>");'>
           <div class="hoverlay"></div>
           <div class="overlay<%= i % 6 %>"></div>
         </div>
-        <div class="menu-header<%= i % 6 %>"><%= item["name"] %></div>
-        <div class="menu-content<%= i % 6 %>"><%= item["description"] %></div>
+        <div class="menu-header<%= i % 6 %>"><%= item.name %></div>
+        <div class="menu-content<%= i % 6 %>"><%= item.description %></div>
       </div>
     </div>
   <% end %>
