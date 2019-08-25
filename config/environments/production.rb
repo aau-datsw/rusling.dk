@@ -81,7 +81,8 @@ Rails.application.configure do
 
   # Skal være rusling.dk, når vi får domænet op.
   config.action_controller.default_url_options = {
-    host: 'rusling.dk'
+    host: 'rusling.dk',
+    protocol: 'https'
   }
 
   config.active_storage.service = :amazon
