@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  belongs_to :educational_domain, dependent: :destroy
+  belongs_to :educational_domain
 
   scope :upcoming, -> { where('DATE(begin_at) > ?', Date.today) }
   scope :today, -> { where('DATE(begin_at) = ?', Date.today) }

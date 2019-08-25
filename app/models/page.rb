@@ -1,7 +1,7 @@
 class Page < ApplicationRecord
   belongs_to :educational_domain
 
-  has_many :accordion_items
+  has_many :accordion_items, dependent: :destroy
   accepts_nested_attributes_for :accordion_items, allow_destroy: true
 
   validates_format_of :slug, with: %r{\A[\w/]{0,}\z}

@@ -1,11 +1,11 @@
 class EducationalDomain < ApplicationRecord
   # include Colorised
-  has_many :menus
-  has_many :events
-  has_many :contacts
-  has_many :sponsors
+  has_many :menus, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :contacts, dependent: :destroy
+  has_many :sponsors, dependent: :destroy
   has_many :users
-  has_many :domain_images
+  has_many :domain_images, dependent: :destroy
 
   belongs_to :primary_menu, class_name: 'Menu', optional: true
   belongs_to :secondary_menu, class_name: 'Menu', optional: true
