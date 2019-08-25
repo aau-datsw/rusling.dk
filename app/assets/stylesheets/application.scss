@@ -657,13 +657,13 @@ blockquote {
   }
 }
 
-.menu-link{
+.menu-link {
   /* all rules required to make the whole div clickable */
   position:absolute;
   color: var(--fontDark);
-  width:100%;
-  height:100%;
-  top:0;
+  width: 100%;
+  height: 100%;
+  top: 0;
   left: 0;
   z-index: 999999999;
   /* this is a fix for IE7-9 */
@@ -1282,67 +1282,35 @@ p{
   border-bottom-style: solid;
 }
 
-.sponsor-title{
+.sponsor-title {
   text-align: center;
   font-size: 4rem;
-  padding-top: 2%;
+  padding-top: 3rem;
   padding-bottom: 1%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
 
 @media (max-width: 1920.98px) {
   .sponsor-title{
-    text-align: center;
     font-size: 2.8rem;
-    padding-top: 2%;
-    padding-bottom: 1%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 }
 
 @media (max-width: 1080.98px) {
-  .sponsor-title{
-    text-align: center;
+  .sponsor-title{text-align: center;
     font-size: 2.5rem;
-    padding-top: 2%;
-    padding-bottom: 1%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 }
 
 @media (max-width: 425.98px) {
-  .sponsor-title{
-    text-align: center;
+  .sponsor-title{text-align: center;
     font-size: 2rem;
-    padding-top: 2%;
-    padding-bottom: 1%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 }
 
 @media (max-width: 325.98px) {
-  .sponsor-title{
-    text-align: center;
+  .sponsor-title{text-align: center;
     font-size: 1.8rem;
-    padding-top: 2%;
-    padding-bottom: 1%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 }
 
@@ -1352,18 +1320,11 @@ p{
   justify-content: center;
   height: 167px;
   overflow: hidden;
-  padding: none;
-}
-
-.samarbejdspartner-box:after {
-  content: "";
-  float:left;
-  display: block;
-  padding-top: 100%;
+  padding: 20px;
 }
 
 .sponsor-img {
-  padding: 1% 1%;
+  padding: 5% 5%;
   position: absolute;
   top: 0;
   bottom: 0;
