@@ -86,4 +86,5 @@ Rails.application.configure do
   }
 
   config.active_storage.service = :amazon
+  ActiveStorage::Service.url_expires_in = 4.hours
 end
