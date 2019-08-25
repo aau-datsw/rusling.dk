@@ -1204,60 +1204,41 @@ blockquote {
   padding-bottom: 0px;
 }
 
-.overlay{
+.overlay {
   width:100%;
   height:100%;
   position: absolute;
-  background-color: black;
-  opacity:0.5;
+  background-color: #444444;
+  opacity: 0.7;
   z-index: 100;
   color: #3E3E3D;
 }
 
-.overlay0{
-  width:100%;
-  height:100%;
-  position: absolute;
+.overlay0 {
   background-color: #EDC131;
-  opacity:0.7;
-  z-index: 100;
-  color: #3E3E3D;
 }
 
-.overlay1, .overlay3{
+.overlay1 {
+  background-color: #01Bc30;
 }
 
-.overlay2{
-  width:100%;
-  height:100%;
-  position: absolute;
+.overlay2 {
   background-color: #CD563F;
-  opacity:0.7;
-  z-index: 100;
-  color: white;
+}
+.overlay3 {
+  background-color: #2b4499;
+
 }
 
-.overlay4{
-  width:100%;
-  height:100%;
-  position: absolute;
-  background-color: #1A2633;
-  opacity:0.7;
-  z-index: 100;
-  color: white;
+.overlay4 {
+  background-color: #2A2633;
 }
 
-.overlay5{
-  width:100%;
-  height:100%;
-  position: absolute;
+.overlay5 {
   background-color: #4D9E45;
-  opacity:0.7;
-  z-index: 100;
-  color: white;
 }
 
-.padding{
+.padding {
   padding: 5% 13%;
 }
 

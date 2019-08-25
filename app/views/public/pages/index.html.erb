@@ -9,7 +9,7 @@
         <a class='menu-link' href='<%= item["link"] %>'></a>
         <div class="filters" style='background-image: url("<%= image_url(item.image_url) %>");'>
           <div class="hoverlay"></div>
-          <div class="overlay<%= i % 6 %>" <% if item.overlay_color.present? %> style="background-color: <%= item.overlay_color %>"<% end %>></div>
+          <div class="overlay overlay<%= i % 6 %>" <% if item.overlay_color.present? %> style="background-color: <%= item.overlay_color %>"<% end %>></div>
         </div>
         <div class="menu-header<%= i % 6 %>" <% if item.text_color.present? %> style="color: <%= item.text_color %>"<% end %>><%= item.name %></div>
         <div class="menu-content<%= i % 6 %>" <% if item.text_color.present? %> style="color: <%= item.text_color %>"<% end %>><%= item.description %></div>
