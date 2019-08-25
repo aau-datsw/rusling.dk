@@ -18,6 +18,14 @@ class RuslingAuthorization < ActiveAdmin::AuthorizationAdapter
       return true if subject.educational_domain == user.educational_domain
     end
 
+    if subject.is_a?(::DomainImage)
+      if action == :create
+        true
+      end
+
+      return true if subject.educational_domain == user.educational_domain
+    end
+
     if subject.is_a?(::Page)
       if action == :create
         true
@@ -50,7 +58,7 @@ class RuslingAuthorization < ActiveAdmin::AuthorizationAdapter
       return action == :read if subject.name == 'Dashboard'
     end
 
-    return action.in?([:read, :create]) if [Event, Page, Menu, Sponsor, Contact].include?(subject)
+    return action.in?([:read, :create]) if [DomainImage, Event, Page, Menu, Sponsor, Contact].include?(subject)
     return action.in?([:read]) if [User, EducationalDomain].include?(subject)
 
     false
