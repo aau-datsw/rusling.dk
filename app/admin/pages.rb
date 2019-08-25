@@ -1,7 +1,7 @@
 ActiveAdmin.register Page do
   includes :educational_domain
   permit_params do
-    params = [:slug, :title, :view_file, :content, accordion_items_attributes: [:title, :content, :_destroy, :id]]
+    params = [:slug, :title, :view_file, :content, accordion_items_attributes: [:title, :content, :position, :_destroy, :id]]
     params += [:educational_domain_id] if current_user.system_admin?
     params
   end
@@ -33,9 +33,9 @@ ActiveAdmin.register Page do
       f.input :content, as: :quill_editor
 
       if f.object.view_file == 'accordion'
-        f.has_many :accordion_items, allow_destroy: true do |g|
+        f.has_many :accordion_items, allow_destroy: true, sortable: :position do |g|
           g.input :title
-          g.input :content
+          g.input :content, as: :quill_editor
         end
       end
     end

@@ -50,6 +50,15 @@ $height-topbar: 40px !default;
 $height-titlebar: 38px !default;
 $text-shadow: #000 !default;
 
+.handle.ui-sortable-handle {
+  @extend .fa;
+  @extend .fa-2x;
+
+  &:before {
+    content: "\f0c9";
+  }
+}
+
 @import "activeadmin_blaze_theme/theme";
 
 @import "array_input";

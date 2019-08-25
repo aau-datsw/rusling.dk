@@ -8,6 +8,8 @@ da:
         restrict_dependent_destroy:
           has_one: Kunne ikke slette posten fordi en afhængig %{record} findes
           has_many: Kunne ikke slette posten fordi afhængige %{record} findes
+  active_admin:
+    move: ""
   date:
     abbr_day_names:
     - søn
