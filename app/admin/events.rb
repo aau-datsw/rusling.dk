@@ -27,7 +27,7 @@ ActiveAdmin.register Event do
   form title: 'Event' do |f|
     inputs 'Hvad' do
       f.input :title
-      f.input :description, as: :text
+      f.input :description, as: :quill_editor
     end
     inputs 'Hvor' do
       f.input :location
