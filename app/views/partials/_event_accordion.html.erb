@@ -21,20 +21,24 @@
               <%= raw(event.description) %>
             </div>
             <div class="col-12 col-lg-4">
-              <div id="eventmap<%= event.id %>" style="height: 100%;min-height:150px"></div>
+              <% if event.lat.present? && event.lng.present? %>
+                <div id="eventmap<%= event.id %>" style="height: 100%;min-height:150px"></div>
+              <% end %>
               <p><%= event.location %></p>
-              <% content_for :init_maps do %>
-                var location = {lat: <%= event.lat %>, lng: <%= event.lng %>}
-                window.rus_maps[<%= event.id %>] = new google.maps.Map(document.getElementById('eventmap<%= event.id %>'), {
-                  center: location,
-                  disableZoom: true,
-                  zoom: 14
-                });
+              <% if event.lat.present? && event.lng.present? %>
+                <% content_for :init_maps do %>
+                  var location = {lat: <%= event.lat %>, lng: <%= event.lng %>}
+                  window.rus_maps[<%= event.id %>] = new google.maps.Map(document.getElementById('eventmap<%= event.id %>'), {
+                    center: location,
+                    disableZoom: true,
+                    zoom: 14
+                  });
 
-                var marker = new google.maps.Marker({
-                  position: location,
-                  map: window.rus_maps[<%= event.id %>]
-                });
+                  var marker = new google.maps.Marker({
+                    position: location,
+                    map: window.rus_maps[<%= event.id %>]
+                  });
+                <% end %>
               <% end %>
             </div>
           </div>
