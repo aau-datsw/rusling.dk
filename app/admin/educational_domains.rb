@@ -21,6 +21,11 @@ ActiveAdmin.register EducationalDomain do
     selectable_column
     column :name
     column :domain if current_user.system_admin?
+    if current_user.system_admin?
+      column "Campus" do |ed|
+        "#{ed.campus&.university}: #{ed.campus&.name}"
+      end
+    end
     column :default_page
     column :primary_menu
     column :educations
