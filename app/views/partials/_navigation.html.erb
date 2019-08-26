@@ -14,8 +14,8 @@
 
         <% domain_list.sort_by { |(k,v)| k }.each do |key, obj| %>
           <% next if obj.id == default_domain_id %>
-            <a class="dropdown-item" href="http://<%= obj.domain %>">
-              <div class="menu-text"><%= key %></div>
+            <a class="dropdown-item" href="https://<%= obj.domain %>">
+              <div class="menu-text"><%= [obj.campus&.name, key].compact.join(' - ') %></div>
             </a>
           <% end %>
         </div>
