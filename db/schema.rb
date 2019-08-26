@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_25_182258) do
+ActiveRecord::Schema.define(version: 2019_08_26_161503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2019_08_25_182258) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "campuses", force: :cascade do |t|
+    t.string "name"
+    t.string "university"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_campuses_on_name"
+    t.index ["university"], name: "index_campuses_on_university"
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "number"
@@ -90,6 +99,8 @@ ActiveRecord::Schema.define(version: 2019_08_25_182258) do
     t.jsonb "colors", default: []
     t.text "educations", default: [], array: true
     t.string "locale"
+    t.bigint "campus_id"
+    t.index ["campus_id"], name: "index_educational_domains_on_campus_id"
     t.index ["default_page_id"], name: "index_educational_domains_on_default_page_id"
     t.index ["domain"], name: "index_educational_domains_on_domain"
   end
@@ -187,6 +198,7 @@ ActiveRecord::Schema.define(version: 2019_08_25_182258) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contacts", "educational_domains"
   add_foreign_key "domain_images", "educational_domains"
+  add_foreign_key "educational_domains", "campuses"
   add_foreign_key "educational_domains", "menus", column: "primary_menu_id", on_delete: :nullify
   add_foreign_key "educational_domains", "menus", column: "secondary_menu_id", on_delete: :nullify
   add_foreign_key "events", "educational_domains"
