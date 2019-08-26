@@ -5,7 +5,7 @@ ActiveAdmin.register_page 'Dashboard' do
     columns do
       column do
         panel 'Næste event' do
-          para "Næste event er #{current_user.domain_admin? ? current_user.educational_domain.events.upcoming.first.pretty_display : Event.upcoming.first.pretty_display}"
+          para "Næste event er #{current_user.domain_admin? ? current_user.educational_domain.events.upcoming.first&.pretty_display : Event.upcoming.first&.pretty_display}"
         end
       end
 
