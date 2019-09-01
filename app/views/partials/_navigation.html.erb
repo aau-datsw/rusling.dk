@@ -9,13 +9,13 @@
         <div class="dropdown-menu">
         <% domain_list = {} %>
         <% EducationalDomain.order(:name).all.each do |item| %>
-          <% item.educations.each { |i| domain_list[i] ||= item } %>
+          <% item.educations.each { |i| domain_list["#{item.campus&.name} - #{i}"] ||= item } %>
         <% end %>
 
-        <% domain_list.sort_by { |(k,v)| [v.campus&.name, k] }.each do |key, obj| %>
+        <% domain_list.sort_by { |(k,v)| k }.each do |key, obj| %>
           <% next if obj.id == default_domain_id %>
             <a class="dropdown-item" href="https://<%= obj.domain %>">
-              <div class="menu-text"><%= [obj.campus&.name, key].compact.join(' - ') %></div>
+              <div class="menu-text"><%= key %></div>
             </a>
           <% end %>
         </div>
