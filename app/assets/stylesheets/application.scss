@@ -1259,6 +1259,9 @@ blockquote {
   border-left: 2px var(--primary) solid;
   border-right: 2px var(--primary) solid;
 }
+body.sund .card {
+  color: #222;
+}
 
 .collapse{
   border-color: inherit;
