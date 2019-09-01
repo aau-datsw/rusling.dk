@@ -7,5 +7,6 @@ FactoryBot.define do
     end
     educations { %w[uddannelse1 uddannelse2 uddannelse3] }
     locale { 'da' }
+    association :campus
   end
 end
