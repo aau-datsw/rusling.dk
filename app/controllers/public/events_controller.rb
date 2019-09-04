@@ -36,7 +36,7 @@ private
     @events.each do |event|
       cal.event do |e|
         e.dtstart = Icalendar::Values::DateTime.new(event.begin_at, tzid: tzid)
-        e.dtend = Icalendar::Values::DateTime.new(event.end_at, tzid: tzid)
+        e.dtend = event.end_at.present? ? Icalendar::Values::DateTime.new(event.end_at, tzid: tzid) : (event.begin_at + 1.hour)
         e.summary = event.title
         e.description = event.description
         e.url = event_url(host: @domain.domain, id: event)
