@@ -73,6 +73,8 @@ group :development do
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-rvm'
   gem 'capistrano3-puma', require: false
+  gem 'capistrano-passenger'
+
   gem 'slackistrano'
 end
 

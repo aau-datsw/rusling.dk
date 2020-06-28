@@ -21,17 +21,18 @@ install_plugin Capistrano::SCM::Git
 #
 require 'capistrano/bundler'
 require 'capistrano/rvm'
-require 'capistrano/puma'
+# require 'capistrano/puma'
+require 'capistrano/passenger'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/console'
 require 'capistrano/rails/migrations'
 require 'slackistrano/capistrano'
 # require 'capistrano/sidekiq'
 
-install_plugin Capistrano::Puma # Default puma tasks
-install_plugin Capistrano::Puma::Workers # if you want to control the workers (in cluster mode)
-install_plugin Capistrano::Puma::Nginx # if you want to upload a nginx site template
-install_plugin Capistrano::Puma::Jungle
+# install_plugin Capistrano::Puma # Default puma tasks
+# install_plugin Capistrano::Puma::Workers # if you want to control the workers (in cluster mode)
+# install_plugin Capistrano::Puma::Nginx # if you want to upload a nginx site template
+# install_plugin Capistrano::Puma::Jungle
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
