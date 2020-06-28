@@ -279,7 +279,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.1.1)
-    puma (3.12.1)
+    puma (3.12.6)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -470,7 +470,7 @@ DEPENDENCIES
   omniauth-saml
   pg
   pry
-  puma (~> 3.7)
+  puma (~> 3.12)
   rails (~> 5.2.2)
   redcarpet
   redis-rails
