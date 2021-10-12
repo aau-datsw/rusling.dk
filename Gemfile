@@ -10,7 +10,7 @@ end
 gem 'jquery-rails'
 gem 'jsonb_accessor', '~> 1.0.0'
 gem 'pg'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 5.2.2'
 gem 'sentry-raven'
 gem 'aws-sdk-s3'
